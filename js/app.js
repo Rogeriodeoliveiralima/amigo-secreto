@@ -1,54 +1,59 @@
-let amigos = [];
-
+let amigo = [];
 
 function adicionar(){
-
-  let nomeAmigos = document.getElementById('nome-amigo');
-
-  if(nomeAmigos.value == ''){
-   return alert('Informe nome de um amigo !!!!');
+  let nomeAmigo = document.getElementById('nome-amigo');
+  
+  if(nomeAmigo.value == ''){
+    return alert('INFORME O NOME DOS AMIGOS!');
   }
 
-  if(amigos.includes(nomeAmigos.value)){
-    return alert('Amigos Ja adcionado!!');
+  if(amigo.includes(nomeAmigo.value)){
+     return alert ('NOME AMIGO JA ADICIONADO!')
   }
 
   let lista = document.getElementById('lista-amigos');
-  amigos.push(nomeAmigos.value);
+   amigo.push(nomeAmigo.value);
 
-  if(lista.textContent == '' ){
-    lista.textContent = nomeAmigos.value;
-  }else {
-    lista.textContent = lista.textContent + ', '+ nomeAmigos.value;
- }
-  nomeAmigos.value = '';
-}
-
+  if(lista.textContent == ''){
+    lista.textContent = nomeAmigo.value;
+  }else{
+    lista.textContent = lista.textContent + ', ' + nomeAmigo.value;
+  }
+  
+  nomeAmigo.value = '';
+} 
 
 function sortear(){
-  if(amigos.length < 4){
-    return alert('Adicione no minimo quatro amigos!!')
+
+  if(amigo.length < 4){
+    return alert('MINIMO DE 4 AMIGOS PARA PARTICIPAR AMIGO SECRETO!')
   }
 
-  embaralha(amigos);
+ 
+
+  embaralha(amigo);
 
   let sorteio = document.getElementById('lista-sorteio');
 
-  for (let i = 0; i < amigos.length; i++){
-    if(i == amigos.length - 1){
-      sorteio.innerHTML = sorteio.innerHTML + amigos[i] + ' --> '+ amigos[0] + '<br>';
+  for (let i = 0; i < amigo.length; i++){
+    if(i == amigo.length - 1){
+      sorteio.innerHTML = sorteio.innerHTML + amigo[i] + ' --> '+ amigo[0] + '<br>';
     }else{
-      sorteio.innerHTML = sorteio.innerHTML + amigos[i] + ' -->'+ amigos[i + 1] + '<br>';
+      sorteio.innerHTML = sorteio.innerHTML + amigo[i] + ' --> '+ amigo[i + 1] + '<br>';
     }
   }
 
 }
 
- function reiniciar(){
+function reiniciar(){
   document.getElementById('lista-amigos').innerHTML = '';
   document.getElementById('lista-sorteio').innerHTML = '';
-  amigos = [];
+  amigo = [];
 }
+
+
+
+
 
 
 
