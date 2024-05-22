@@ -1,73 +1,62 @@
-let amigo = [];
+
+let amigos = [];
 
 function adicionar(){
   let nomeAmigo = document.getElementById('nome-amigo');
-  
   if(nomeAmigo.value == ''){
-    return alert('INFORME O NOME DOS AMIGOS!');
+    return alert('Informe nome do amigo!')
   }
 
-  if(amigo.includes(nomeAmigo.value)){
-     return alert ('NOME AMIGO JA ADICIONADO!')
+  if(amigos.includes(nomeAmigo.value)){
+    return alert('Nome ja foi colocado na lista');
   }
+
 
   let lista = document.getElementById('lista-amigos');
-   amigo.push(nomeAmigo.value);
+  amigos.push(nomeAmigo.value);
 
   if(lista.textContent == ''){
     lista.textContent = nomeAmigo.value;
   }else{
-    lista.textContent = lista.textContent + ', ' + nomeAmigo.value;
+    lista.textContent = lista.textContent + ', '+ nomeAmigo.value;
   }
-  
   nomeAmigo.value = '';
-} 
+
+}
 
 function sortear(){
-
-  if(amigo.length < 4){
-    return alert('MINIMO DE 4 AMIGOS PARA PARTICIPAR AMIGO SECRETO!')
+  if(amigos.length < 4){
+    return alert('Minimo de quatro amigos!');
   }
 
- 
-
-  embaralha(amigo);
+  embaralha(amigos);
 
   let sorteio = document.getElementById('lista-sorteio');
-
-  for (let i = 0; i < amigo.length; i++){
-    if(i == amigo.length - 1){
-      sorteio.innerHTML = sorteio.innerHTML + amigo[i] + ' --> '+ amigo[0] + '<br>';
+  for(let i = 0; i < amigos.length; i++){
+    if(i == amigos.length -1){
+      sorteio.innerHTML = sorteio.innerHTML + amigos[i] + ' --> ' + amigos[0] +'<br>';
     }else{
-      sorteio.innerHTML = sorteio.innerHTML + amigo[i] + ' --> '+ amigo[i + 1] + '<br>';
+      sorteio.innerHTML = sorteio.innerHTML + amigos[i] + ' --> ' + amigos[i + 1] +'<br>';
     }
   }
-
 }
 
 function reiniciar(){
+  document.getElementById('nome-amigo').innerHTML = '';
   document.getElementById('lista-amigos').innerHTML = '';
   document.getElementById('lista-sorteio').innerHTML = '';
-  amigo = [];
+  amigos = [];
 }
-
-
-
-
-
 
 
 function embaralha(lista) {
 
-  for (let indice = lista.length; indice; indice--) {
-
-      const indiceAleatorio = Math.floor(Math.random() * indice);
-      
-      // guarda de um índice aleatório da lista
-      const elemento = lista[indice - 1];
-      
-      lista[indice - 1] = lista[indiceAleatorio];
-      
-      lista[indiceAleatorio] = elemento;
+  let indice = lista.length
+  
+  while(indice) {
+      // atenção para o pós-incremento indice-- 
+      const indiceAleatorio = Math.floor(Math.random() * indice--);
+      [lista[indice], lista[indiceAleatorio]] = 
+          [lista[indiceAleatorio], lista[indice]];
   }
 }
