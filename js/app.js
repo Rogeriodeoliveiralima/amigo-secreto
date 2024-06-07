@@ -1,18 +1,18 @@
 
-let amigos = [];
+let amigos =[];
 
 function adicionar(){
-
   let nomeAmigo = document.getElementById('nome-amigo');
+
   if(nomeAmigo.value == ''){
-    return ('Informe nome do Amigo!');
+    return alert('Informe nome de um amigo');
   }
 
-  if(amigos.includes(nomeAmigo.value) ){
-    return alert('Esse nome de amigo ja esta na lista!');
+  if(amigos.includes(nomeAmigo.value)){
+    return alert('Nome ja informado');
   }
 
-  let lista = document.getElementById('lista-amigos');
+  let lista = documet.getElementById('lista-amigos');
   amigos.push(nomeAmigo.value);
 
   if(lista.textContent == ''){
@@ -20,43 +20,17 @@ function adicionar(){
   }else{
     lista.textContent = lista.textContent + ', '+ nomeAmigo.value;
   }
-  nomeAmigo.value ='';
+
+  nomeAmigo.value = '';
 }
-
-function sortear(){
-
- if(amigos.length < 4){
-  return alert('Adicione no minimo 4 amigos!');
- }
-
-  embaralha(amigos);
-
-  let sorteio = document.getElementById('lista-sorteio');
-  for (let i = 0; i < amigos.length; i++){
-    if( i == amigos.length -1){
-      sorteio.innerHTML = sorteio.innerHTML + amigos[i]+ ' --> '+ amigos[0] + '<br>';
-    }else{
-      sorteio.innerHTML = sorteio.innerHTML + amigos[i]+ ' --> '+ amigos[i + 1] + '<br>';
-    }
-  }
-}
-
-function reiniciar (){
-  document.getElementById('lista-sorteio').innerHTML = '';
-  document.getElementById('lista-amigos').innerHTML = '';
-  
-}
-
 
 function embaralha(lista) {
 
-  for (let indice = lista.length; indice; indice--) {
+  for (indice = lista.length; indice; indice--) {
 
       const indiceAleatorio = Math.floor(Math.random() * indice);
-
-      // atribuição via destructuring
-      [lista[indice - 1], lista[indiceAleatorio]] = 
-          [lista[indiceAleatorio], lista[indice - 1]];
+      
+      // guarda de um índice aleatório da lista
+      const elemento = lista[indice - 1];
   }
 }
-
